@@ -1,44 +1,21 @@
 import React from "react";
 import { Books } from "./books"; // Books Component from Books.js
+import axios from "axios"; // Importing axios to work as our web client
 
 export class Read extends React.Component { //Accessing the React Functionality & marked for export
 
+    componentDidMount(){ // When component becomes active in the view it will tell it what to do 
+        axios.get('https://jsonblob.com/api/jsonblob/1027219693823606784') // Promise 
+        .then((response)=>{
+            this.setState({books:response.data})
+        }) // if everything works correctly, html response comes back and set the state
+        .catch((error)=>{  //used if errors occur
+            console.log(error);
+        })
+    }
+
     state = {// Holding the components data
-        books: [ // An array of books
-
-            {
-                "title": "Learn Git in a Month of Lunches",
-                "isbn": "1617292419",
-                "pageCount": 0,
-                "thumbnailUrl": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/umali.jpg",
-                "status": "MEAP",
-                "authors": ["Rick Umali"],
-                "categories": []
-            },
-            {
-                "title": "MongoDB in Action, Second Edition",
-                "isbn": "1617291609",
-                "pageCount": 0,
-                "thumbnailUrl": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/banker2.jpg", "status": "MEAP",
-                "authors": [
-                    "Kyle Banker",
-                    "Peter Bakkum",
-                    "Tim Hawkins",
-                    "Shaun Verch",
-                    "Douglas Garrett"
-                ],
-                "categories": []
-            },
-            {
-                "title": "Getting MEAN with Mongo, Express, Angular, and Node",
-                "isbn": "1617292036",
-                "pageCount": 0,
-                "thumbnailUrl": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/sholmes.jpg", "status": "MEAP",
-                "authors": ["Simon Holmes"],
-                "categories": []
-            }
-        ]
-
+        books: [ ]  // An array of books
     }
 
     render() {
