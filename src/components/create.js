@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"; // A JS Library used to make HTTP Requests from Node.js
 
 export class Create extends React.Component { //Accessing the React Functionality & marked for export
 
@@ -24,7 +25,17 @@ export class Create extends React.Component { //Accessing the React Functionalit
         ${this.state.cover},
         ${this.state.author}`); // Print out to console
         
-        this.setState({ // 
+        const book = {
+            title: this.state.title,
+            cover: this.state.cover,
+            author: this.state.author
+        }
+
+        axios.post('http://localhost:4000/api/books',book) // Axois Post makes HTTP request with post method and send to url 
+        .then() // callback function 
+        .catch(); // a function with possible error
+
+        this.setState({ // re-rendered with updated state
             title: '',
             cover: '',
             author:''

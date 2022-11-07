@@ -5,9 +5,9 @@ import axios from "axios"; // Importing axios to work as our web client
 export class Read extends React.Component { //Accessing the React Functionality & marked for export
 
     componentDidMount(){ // When component becomes active in the view it will tell it what to do 
-        axios.get('https://jsonblob.com/api/jsonblob/1027219693823606784') // Promise 
+        axios.get('http://localhost:4000/api/books') // Promise // My API
         .then((response)=>{
-            this.setState({books:response.data})
+            this.setState({books:response.data.mybooks}) // My JSON mybooks
         }) // if everything works correctly, html response comes back and set the state
         .catch((error)=>{  //used if errors occur
             console.log(error);
