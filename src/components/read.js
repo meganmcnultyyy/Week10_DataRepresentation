@@ -7,7 +7,7 @@ export class Read extends React.Component { //Accessing the React Functionality 
     componentDidMount(){ // When component becomes active in the view it will tell it what to do 
         axios.get('http://localhost:4000/api/books') // Promise // My API
         .then((response)=>{
-            this.setState({books:response.data.mybooks}) // My JSON mybooks
+            this.setState({books:response.data}) // My JSON mybooks
         }) // if everything works correctly, html response comes back and set the state
         .catch((error)=>{  //used if errors occur
             console.log(error);

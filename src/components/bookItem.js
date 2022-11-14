@@ -9,9 +9,9 @@ export class BookItem extends React.Component {
                     <Card.Header>{this.props.book.title}</Card.Header> {/* Each book item title will display */}
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
-                            <img src={this.props.book.thumbnailUrl} width="200" height="200"></img> {/* Each book item thumbnail will display */}
+                            <img src={this.props.book.cover} width="200" height="200"></img> {/* Each book item thumbnail will display */}
                             <footer>
-                             {this.props.book.authors[0]} {/* Each book item authors will display */}
+                             {this.props.book.author} {/* Each book item authors will display */}
                             </footer>
                         </blockquote>
                     </Card.Body>
