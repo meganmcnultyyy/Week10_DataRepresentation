@@ -99,9 +99,17 @@ app.get('/api/books', (req, res) => {
     })
 })
 
-app.get('api/book/:id',(req,res)=>{ // Searching DB for id
+app.put('/api/book/:id', (req,res) => { // HTTP put request to the specified path with specified callback function, complete overwrite
+  console.log("Update "+req.params.id);
+  
+  bookModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, data)=>{
+    res.send(data); // sending back data
+  }) // Replace all fields, complete overwrite of the data
+})
+
+app.get('/api/book/:id',(req,res)=>{ // Searching DB for id
     console.log(req.params.id); // Pulling param out of URL
-    bookModel.findById(req.params.id,()=>{ // Find Document with unique id 
+    bookModel.findById(req.params.id,(error, data)=>{ // Find Document with unique id 
         res.json(data); // Sending back JSON
     })
 })

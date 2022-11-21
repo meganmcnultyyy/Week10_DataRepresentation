@@ -14,6 +14,7 @@ import {
 } from "react-router-dom"; // Importing Routing 
 import { Read } from './components/read'; // Read Class from read.js
 import { Create } from './components/create'; // Create Class from create.js
+import { Edit } from './components/edit'; // Import edit component
 
 
 class App extends React.Component { // Changing to a function and extneds React Component to make the class a component
@@ -37,6 +38,7 @@ class App extends React.Component { // Changing to a function and extneds React 
             <Route path='/' element={<Content></Content>} exact></Route>
             <Route path='/read' element={<Read></Read>} exact></Route>
             <Route path='/create' element={<Create></Create>} exact></Route>
+            <Route path='/edit/:id' element={<Edit></Edit>}></Route> {/* Routing to show Edit Component */}
           </Routes>
 
           {/*<Header></Header> {/* Import header class from header component*/}
